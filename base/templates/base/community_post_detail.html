@@ -1,0 +1,109 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static  'css/community_detail.css' %}" />
+
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center ">
+        <div class="col-md-8 ">
+           
+
+            <div class="container mt-5">
+                <!-- Message 1 -->
+                <div class="row">
+                    <div class="col-auto message-sender-col">
+                        <div class="message-sender">
+                            <a href="{% url 'profile' community.user.id %}">
+
+                                <img src="{{community.user.image.url }}" alt="Sender Avatar" class="sender-avatar">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col position-relative">
+                        <!-- Delete Anchor Div -->
+                        
+                        <div class="message-box shadow-lg msg-background position-relative">
+                            <div class="message">
+                                <p>{{community.question}}</p>
+                                <!-- Image Placeholder -->
+                                {% if community.image %}
+                                <img src="{{community.image.url}}" alt="Message Image" class="img-fluid" style="border-radius: 10px;">
+                                {% endif %}
+                            </div>
+                            <div class="container">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    
+                                <div class="mb-3">
+                                    <input type="text" name="body" class="form-control" style="border: 1px solid gray; width: 30%; border-radius: 15px;" id="exampleFormControlInput1" placeholder="Enter message....">
+                                </div>
+                                    <!-- <img height="30" width="30" src="{% static 'images/comments.png' %}" alt="Message Image" class="img-fluid"> -->
+                                </form>
+                            </div>
+                            <!-- Delete Button -->
+                            {% if request.user == community.user or user.is_superuser %}
+                            <div class="position-absolute bottom-0 end-0 mb-2 mr-2">
+                                <a href="{% url 'deletecommunity' community.id %}" class="text-primary">
+                                    <i class="fa fa-trash-o" style="font-size:24px;margin-right: 10px;"></i>
+                                    
+                                </a>
+                            </div>
+                            {% endif %}
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- Message 2 -->
+            </div>
+
+            <div class="container mt-5">
+                <!-- Message 1 -->
+                {% for comment in community_comment  %}
+                <div class="row mt-5">
+                    <div class="col-auto message-sender-col">
+                        <div class="message-sender">
+                            <a href="{% url 'profile' comment.user.id %}">
+
+                                <img src="{{comment.user.image.url }}" alt="Sender Avatar" class="sender-avatar">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col position-relative">
+                        <!-- Delete Anchor Div -->
+                        
+                        <div class="message-box shadow-lg msg-background position-relative">
+                            <div class="message">
+                                <p>{{comment.body}}</p>
+                            </div>
+                       
+      
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- Message 2 -->
+            </div>
+
+        
+
+           
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

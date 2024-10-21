@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+
+<div class="container mb-5" style="width: 100%; color: slateblue; display: flex; align-items: center; justify-content: center; background-color: aliceblue; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+  <h1>Become  Selller Now!</h1>
+</div>
+
+
+<div class="container mb-5" style="width: 50%; color: white; display: flex; align-items: center; justify-content: center; background-color: aquamarine; border-radius: 15px;">
+  <h1>{{userfee}}$ Seller Fee</h1>
+</div>
+
+
+<div class="container mb-5" style="display: flex; align-items: center; justify-content: center; ">
+ 
+  <form class="shadow-lg" method="post" style="width: 100%; display: flex; align-items: center; justify-content: center; background-color: aquamarine;">
+     
+
+    {% csrf_token %}
+      <div  id="paypal-button-container" style="width: 50%; margin-top: 5%;"></div>
+  </form>
+
+
+
+<script
+src="https://www.paypal.com/sdk/js?client-id=ATPa1ar-HI5qNZaVXxGVwNtUhhJaY4ZJ_LlkAvjMJVNyS7_7rOKgeFxWijLoVZG4Jh8K0EWbk48zo9AT&currency=USD&disable-funding=credit">
+</script>
+
+
+<div id="paypal-button-container"></div>
+
+
+<script>
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+  
+      style: {
+                color:  'silver',
+                shape:  'pill',
+                label:  'pay',
+                height: 40,
+            },
+      // Set up the transaction
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '{{userfee}}'
+  
+            }
+          }]
+        });
+      },
+  
+      
+  
+  
+  
+      // Finalize the transaction
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+          // Redirect the user to the shipping address page
+          window.location.href = "{% url 'home' %}";
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+  
+  
+
+
+
+
+{% endblock %}

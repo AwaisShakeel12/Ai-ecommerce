@@ -1,0 +1,56 @@
+
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/upload_product.css' %}">
+
+
+
+
+<div class="container">
+    <div class="container mt-3">
+        <video class="background-video" autoplay loop muted type="video/mp4" src="../base/../../../static/video/bg6.mp4"></video>
+
+      
+    </div>
+      <div class="container mt-5 mb-5 border-2 shadow-lg main-container">
+          <div class="row">
+            
+       
+      <h2 class="text-center">UPLOAD PRODUCT</h2>
+               
+              <div class="col mt-3">
+                  <form action="" enctype="multipart/form-data" method="post" class="text-dark">
+                      {% csrf_token %}
+  
+                      
+                      {% for message in messages %}
+                      <div class="container error-msg" role="alert">
+                          <!-- <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg> -->
+                          <div>{{message}}</div>
+                        </div>  
+                        
+                        {% endfor %}
+
+                            {{form.as_p}}
+
+                    <button type="submit"   value="submit"  class="btn btn-primary mb-3 signup-text login-btn">UPLOAD</button>
+                  </form>
+              </div>
+  
+          </div>
+      </div>
+  
+  
+    
+  
+  </div>
+  
+
+
+
+{% endblock %}

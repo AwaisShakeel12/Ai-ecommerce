@@ -1,0 +1,123 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+
+    h1{
+        background-color: aliceblue;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        color: navy;
+        border-radius: 15px;
+    }
+
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md">
+            <h1>Users</h1>
+            <div class="container-fluid ">
+                <ul class="list-group mt-2">
+                   
+                    {% for user in users %}
+                    <li  class="list-group-item mt-5 mb-3 d-flex  align-items-center catagory-item zoom-effect" style="background-color: navy;">
+                        <div class="user ml-2 mr-3">
+                            {% if user.image %}
+                            <img height="30" width="30" style="margin-left:0%; border-radius: 50%; "  src="{{user.image.url}}" alt="User Image">
+                            {% endif %}
+                        </div>
+                        <a href="{% url 'profile' user.id  %}" class="category-link ml-2" style="margin-left: 10px;">{{user.username}}</a>
+                        {% if user.is_superuser %}
+                        <img height="20" width="20" style="margin-left:3px; margin-top: 5px; border-radius: 50%; "  src="{% static 'images/tick.png' %}" alt="User Image">
+                         {% endif %}
+                         <a style="color: black;" href="{% url 'deleteuser' user.id %}">  <i class="fa fa-trash-o" style="font-size:24px; margin-left: 10px; color: white;"></i> </a>
+                        
+                        <hr class="category-divider">
+                    </li>
+                    {% endfor %}
+
+                   
+                </ul>
+        </div>
+        </div>
+         
+             <div class="col-md">
+                 <h1>Blogs</h1>
+
+                 <div class="container-fluid ">
+                    <ul class="list-group mt-2">
+                       
+                        {% for blog in blogs %}
+                        <li  class="list-group-item mt-5 mb-3 d-flex  align-items-center catagory-item zoom-effect" style="background-color: navy;">
+                            <div class="user ml-2 mr-3">
+
+                            </div>
+                            <a  class="category-link ml-2" style="margin-left: 10px;">{{blog.caption}}</a>
+                        
+                             <a  href="{% url 'deleteblog' blog.id %}">  <i class="fa fa-trash-o" style="font-size:24px; margin-left: 10px; color: white;"></i> </a>
+                            
+                            <hr class="category-divider">
+                        </li>
+                        {% endfor %}
+    
+                       
+                    </ul>
+            </div>
+
+
+                
+         
+             </div>
+             
+             <div class="col-md">
+                 <h1>Feedback</h1>
+                 <div class="container-fluid ">
+                    <ul class="list-group mt-2">
+                       
+                        {% for feedback in feedbacks %}
+                        <li  class="list-group-item mt-5 mb-3 d-flex  align-items-center catagory-item zoom-effect" style="background-color: navy;">
+                            <div class="user ml-2 mr-3">
+
+                            </div>
+                            <a  class="category-link ml-2" style="margin-left: 10px;">{{feedback.feedback}}</a>
+                        
+                             <a  href="{% url 'deletefeedback' feedback.id %}">  <i class="fa fa-trash-o" style="font-size:24px; margin-left: 10px; color: white;"></i> </a>
+                            
+                            <hr class="category-divider">
+                        </li>
+                        {% endfor %}
+    
+                       
+                    </ul>
+            </div>
+
+         
+             </div>
+        </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

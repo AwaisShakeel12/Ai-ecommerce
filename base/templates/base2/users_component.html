@@ -1,0 +1,26 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/blog2.css' %}">
+
+<div class="container-fluid ">
+    <ul class="list-group mt-2">
+       
+        {% for user in users %}
+        <li  class="list-group-item mt-5 mb-3 d-flex  align-items-center catagory-item">
+            <div class="user ml-2 mr-3">
+                {% if user.image %}
+                <img height="30" wi]dth="30" style="margin-left:0%; border-radius: 50%; "  src="{{user.image.url}}" alt="User Image">
+                {% endif %}
+            </div>
+            <a href="{% url 'profile' user.id  %}" class="category-link ml-2" style="margin-left: 10px;">{{user.username}}</a>
+            {% if user.is_superuser %}
+            <img height="20" width="20" style="margin-left:3px; margin-top: 5px; border-radius: 50%; "  src="{% static 'images/tick.png' %}" alt="User Image">
+             {% endif %}
+            
+            <hr class="category-divider">
+        </li>
+        {% endfor %}
+
+       
+    </ul>
+</div>

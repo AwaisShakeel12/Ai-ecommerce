@@ -1,0 +1,117 @@
+
+body{
+    background-image: url('../../../static/images/bg2.jpg');
+    /* position: relative; */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 200vh;
+    width: 100%;
+
+   
+}
+
+.form-background{
+    background-image: url('../../../static/images/community2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+}
+
+.msg-background{
+  
+
+}
+
+.main-container{
+width: 40%;
+background-color: white;
+
+border-radius: 15px;
+}
+
+.text-center{
+color: blueviolet;
+font-weight: bold;
+/* font-family: ; */
+}
+
+.form-label{
+color: gray;
+font-weight:700;
+}
+
+.form-control{
+border-color: transparent;
+border-bottom-color: gray;
+border-radius: 0%;
+color: gray;
+
+}
+
+.signup-text{
+/* margin-left: 45%; */
+text-decoration: none;
+}
+
+.login-btn{
+font-family: Poppins-Medium;
+font-size: 16px;
+color: #fff;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: blueviolet;
+
+
+}
+
+
+
+/* ------------community message --------------- */
+
+.zoom-effect {
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.zoom-effect:hover {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+
+.message-box {
+        max-width: 100%;
+        border: 1px solid whitesmoke;
+        border-radius: 10px;
+        /* padding: 10px; */
+        margin-bottom: 10px;
+        background-color: white;
+    }
+    .message {
+        border-radius: 10px;
+        padding: 10px;
+        /* margin-bottom: 10px; */
+    }
+    .message-sender {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .sender-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .reply-icon {
+        color: #007bff; /* Blue color for reply icon */
+        font-size: 30px;
+        margin-left: auto;
+    }
+    .message-sender-col {
+    margin-right: -30px; /* Set margin-right to 10px */
+    }
+
+

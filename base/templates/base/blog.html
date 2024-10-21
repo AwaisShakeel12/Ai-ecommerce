@@ -1,0 +1,176 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+<!-- <script src="{% static 'css/blog.js' %}"></script> -->
+
+
+<div class="container-fluid" >
+    <div class="row" >
+        <!-- Left side: Card with Image and Body -->
+        <div class="col-md-8 plant-area " >
+            {% for blog in blogs reversed %}
+            <div style=" height: 50%; width: 80%; margin-left: 5%;">
+                <div class="container blog-box mt-5 boder-2 shadow-lg" >
+                    <!-- Blog Post Header -->
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="blog-header  header-blog d-flex align-items-center">
+                                <div class="user ml-2 mr-3">
+                                    <img height="30" width="30" style="margin-left: 20%; border-radius: 50%; "  src="{{blog.user.image.url}}" alt="User Image">
+                                </div>
+                                <div>
+                                    <a style="text-decoration: none;" href="{% url 'profile' blog.user.id%}">
+                                        <h5 class="mb-0 ml-2" style="margin-left: 20%;">{{blog.user.username}}</h5>
+                                    </a>
+                                </div>
+                        
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blog Post Image -->
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <img src="{{blog.image.url}}" style="width: 100%; height: 70%;" alt="Blog Image" class="blog-image">
+                        </div>
+                    </div>
+                    <!-- Blog Post Body -->
+                    <div class="row" style="margin-top: -30%;">
+                        <div class="col-md-12">
+                            <h3 class="text-success" style="margin-left: 20px;">
+                                <a style="text-decoration: none;" >{{blog.caption}}</a>
+                            </h3>
+                        </div>
+                        <div class="col-md-12" style="margin-left: 20px;">
+                            <p>{{blog.text}}</p>
+                        </div>
+                    </div>
+                    <!-- Blog Post Footer -->
+                    <div class="row  blog-footer">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- Like Button -->
+                                <div class="like-button">
+                                    <a href="likeblog?post_id={{blog.id}}" >
+
+                                        <button class="toggle-like btn btn-link" data-blog-id="{{ blog.id }}">
+                                            <img  src="{% static 'images/heart-e.png' %}" alt="Like" class="like-icon" style="width: 30px; height: 30px;">
+                                        </button>
+                                    </a>
+
+                                
+                            
+                            
+                                
+                                </div>
+                                <div  style="margin-left: -85%; margin-top:15px;" class="d-flex justify-content-between align-items-center">
+                                    {% if blog.no_of_likes == 0 %}
+                                    <p>no like</p>
+                                    {% elif blog.no_of_likes == 1 %}  
+                                    <p>like: {{blog.no_of_likes}}</p>
+                                    {% else %}
+                                    <p>like: {{blog.no_of_likes}}</p>   
+                
+                                    {% endif %}
+
+                                </div>
+                                <!-- Download Button -->
+                                <div>
+                                    
+                                    <a href="{{blog.image.url}}" download="">
+                                        <img src="{% static 'images/download.png' %}" alt="Download" class="download-icon" style="width: 35px; height: 35px;">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Right side: Form -->
+        <div class="col-md-4 mt-4 ">
+
+            <div class="container mt-5 mb-5 border-2 shadow-lg main-container">
+                <div class="row">
+                  
+             
+            <h2 class="text-center">BLOG</h2>
+                     
+                    <div class="col mt-3">
+                        <form action="" enctype="multipart/form-data" method="post" class="text-dark">
+                            {% csrf_token %}
+        
+      
+                          <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Caption</label>
+                            <input type="text" name="caption" class="form-control" id="exampleFormControlInput1" placeholder="Enter caption....">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Details</label>
+                            <textarea name="text" class="form-control textarea" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+      
+                       
+        
+                          <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">Image</label>
+                            <input class="form-control" name="image" type="file" id="formFileMultiple" multiple>
+                          </div>
+      
+                   
+      
+      
+      
+                          <button type="submit"   value="submit"  class="btn btn-danger mb-3 signup-text login-btn">UPLOAD</button>
+                        </form>
+                    </div>
+        
+                </div>
+            </div>
+            
+       
+
+
+
+            <!-- -----users --------- -->
+           
+            <div class="container-fluid ">
+                    <ul class="list-group mt-2">
+                       
+                        {% for user in users %}
+                        <li  class="list-group-item mt-5 mb-3 d-flex  align-items-center catagory-item zoom-effect">
+                            <div class="user ml-2 mr-3">
+                                {% if user.image %}
+                                <img height="30" width="30" style="margin-left:0%; border-radius: 50%; "  src="{{user.image.url}}" alt="User Image">
+                                {% endif %}
+                            </div>
+                            <a href="{% url 'profile' user.id  %}" class="category-link ml-2" style="margin-left: 10px;">{{user.username}}</a>
+                            {% if user.is_superuser %}
+                            <img height="20" width="20" style="margin-left:3px; margin-top: 5px; border-radius: 50%; "  src="{% static 'images/tick.png' %}" alt="User Image">
+                             {% endif %}
+                            
+                            <hr class="category-divider">
+                        </li>
+                        {% endfor %}
+
+                       
+                    </ul>
+            </div>
+                
+                
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
+

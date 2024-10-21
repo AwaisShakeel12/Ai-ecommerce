@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+
+
+<div class="container-fluid">
+    <div class="row">
+
+     
+        <div class="col-md-8 plant-area">
+            {% include 'base2/product_component.html'%}
+        </div>
+
+
+
+
+        <!-- Right side: Form -->
+        <div class="col-md-4 mt-2 ">
+            <form method="get" class="mt-5">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Search</label>
+                    <input type="text" name="q"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+          
+             
+                <button type="submit" class="btn btn-danger" value="submit">Submit</button>
+            </form>
+
+            <div class="container-fluid mt-5">
+                    <ul class="list-group">
+                        <a class="zoom-effect" href="{% url 'product' %}" class="category-link text-success">ALL</a>
+                       
+                    </ul>
+            </div>
+
+            <div class="container-fluid">
+                {% include 'base2/blogs_component.html' %}
+            </div>
+                
+                
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'base2/footer_component.html'%}
+
+
+
+
+{% endblock %}

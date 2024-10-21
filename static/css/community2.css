@@ -1,0 +1,99 @@
+
+body{
+    /* background-color: aquamarine; */
+    background-image: url('../../../static/images/bg-01.jpg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: contain;
+   
+}
+
+.form-background{
+    background-image: url('../../../static/images/community2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+}
+
+.main-container{
+width: 40%;
+background-color: white;
+
+border-radius: 15px;
+}
+
+.text-center{
+color: blueviolet;
+font-weight: bold;
+/* font-family: ; */
+}
+
+.form-label{
+color: gray;
+font-weight:700;
+}
+
+.form-control{
+border-color: transparent;
+border-bottom-color: gray;
+border-radius: 0%;
+color: gray;
+
+}
+
+.signup-text{
+/* margin-left: 45%; */
+text-decoration: none;
+}
+
+.login-btn{
+font-family: Poppins-Medium;
+font-size: 16px;
+color: #fff;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: blueviolet;
+
+
+}
+.file-box{
+/* background-color: aqua; */
+}
+.form-box{
+/* width: 70%; */
+}
+.message-box {
+        max-width: 100%;
+        border: 1px solid whitesmoke;
+        border-radius: 10px;
+        /* padding: 10px; */
+        margin-bottom: 10px;
+        background-color: white;
+    }
+    .message {
+        border-radius: 10px;
+        padding: 10px;
+        /* margin-bottom: 10px; */
+    }
+    .message-sender {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .sender-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .reply-icon {
+        color: #007bff; /* Blue color for reply icon */
+        font-size: 20px;
+        margin-left: auto;
+    }
+    .message-sender-col {
+    margin-right: -30px; /* Set margin-right to 10px */
+    }

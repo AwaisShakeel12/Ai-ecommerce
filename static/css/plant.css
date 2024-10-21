@@ -1,0 +1,122 @@
+.img-slide{
+    height: 50%;
+    width: 50%;
+}
+
+.plant-area{
+    background-color: aliceblue;
+    
+    
+}
+
+.zoom-effect {
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
+  }
+  
+  .zoom-effect:hover {
+    transform: scale(1.1); /* Scale up on hover */
+  }
+
+.catagory-item{
+    background: rgb(29,250,170);
+    background: linear-gradient(90deg, rgba(29,250,170,1) 0%, rgba(84,244,118,1) 35%, rgba(0,212,255,1) 100%);
+    margin-bottom: 10px;
+    border-radius: 15px;
+
+    
+}
+
+.category-link {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 600;
+ 
+}
+
+.category-link:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.category-divider {
+    /* margin-top: 5px;  */
+    border-top: 1px solid #dee2e6; /* Divider line color */
+}
+
+
+
+
+
+
+
+
+.main-plant-container{
+    background-image:url('../images/bg2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:100%;
+    margin: 0;
+    padding: 0;
+  }
+  .plant-container{
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: center;
+  }
+  .plant-box{
+    /* background-color: aqua; */
+    padding: 0;
+    margin: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 90%;
+  }
+
+  .plant-image{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+
+  .plant-body{
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+
+  }
+
+  .plant-name{
+    color: green;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 3%;
+  }
+
+  .plant-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .plant-price{
+    margin-right: -5%;
+  }
+  .buyer-info-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+ 
+
+  .zoom-effect {
+      transition: transform 0.3s ease; /* Add transition for smooth animation */
+  }
+
+  .zoom-effect:hover {
+      transform: scale(1.1); /* Scale up on hover */
+  }
+
+
+  

@@ -1,0 +1,41 @@
+
+
+.form-label{
+    color: gray;
+    font-weight:700;
+}
+
+.form-control{
+    border-color: transparent;
+    border-bottom-color: gray;
+    border-radius: 0%;
+    color: gray;
+    
+}
+
+
+
+.catagory-item{
+    background: rgb(29,250,170);
+    background: linear-gradient(90deg, rgba(29,250,170,1) 0%, rgba(84,244,118,1) 35%, rgba(0,212,255,1) 100%);
+    margin-bottom: 10px;
+    border-radius: 15px;
+
+    
+}
+
+.category-link {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 600;
+ 
+}
+
+.category-link:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.category-divider {
+    /* margin-top: 5px;  */
+    border-top: 1px solid #dee2e6; /* Divider line color */
+}

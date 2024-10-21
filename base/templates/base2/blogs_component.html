@@ -1,0 +1,40 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/blog2.css' %}">
+<script src="{% static 'css/blog.js' %}"></script>
+
+
+
+   
+        <!-- Left side: Card with Image and Body -->
+        <div class="container-fluid ">
+            {% for blog in blogs reversed %}
+            <div class="container-fluid mt-5 border-2" >
+                
+                <div class="row mt-0">
+                    <div class="container-fluid">
+                        <img src="{{blog.image.url}}" style="width: 100%; margin: 0; padding: 0;" alt="Blog Image" class="blog-image">
+                    </div>
+                </div>
+                <!-- Blog Post Body -->
+                <div class="row mt-3">
+                    <div class="container-fluid">
+                        <h3 class="text-success">
+                            <a href="{% url 'blog' %}" style="text-decoration: none;" >{{blog.caption}}</a>
+                        </h3>
+                    </div>
+                    <div class="col-md-12">
+                        <p>{{blog.text}}</p>
+                    </div>
+                </div>
+                <!-- Blog Post Footer -->
+            
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Right side: Form -->
+      
+
+
+

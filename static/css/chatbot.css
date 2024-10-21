@@ -1,0 +1,462 @@
+
+
+:root {
+    --header-height: 3rem;
+  
+    /*========== Colors ==========*/
+    /* Change favorite color */
+    --hue-color: 190; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+  
+    /* HSL color mode */
+    --first-color: hsl(var(--hue-color), 69%, 61%);
+    --first-color-second: hsl(var(--hue-color), 69%, 61%);
+    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+    --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+    --title-color: hsl(var(--hue-color), 8%, 15%);
+    --text-color: hsl(var(--hue-color), 8%, 45%);
+    --text-color-light: hsl(var(--hue-color), 8%, 65%);
+    --input-color: hsl(var(--hue-color), 70%, 96%);
+    --body-color: hsl(var(--hue-color), 60%, 99%);
+    --container-color: #fff;
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+  
+    /*========== Font and typography ==========*/
+    --body-font: "Poppins", sans-serif;
+  
+    /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+    --big-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+  
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+  
+    /*========== Margenes Bottom ==========*/
+    /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+    --mb-0-25: 0.25rem;
+    --mb-0-5: 0.5rem;
+    --mb-0-75: 0.75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --mb-3: 3rem;
+  
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+  }
+/* Additional styles for the chat button */
+#chatButton {
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    background-color: #79C7C5;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(119, 119, 119, 0.5);
+
+    background-color: var(--first-color);
+    background: var(--main-color);
+
+
+}
+.chat-container {
+  
+    position: absolute;
+    bottom: 20px; /* Adjust to fit above the button */
+    z-index: 1000; /* Ensure it appears on top */
+    
+
+    background-color: #A1E2D9;
+    background-color: rgb(25, 198, 198);
+    /* background-color: aquamarine; */
+ 
+    background-image: url('../images/bg-01.jpg');
+ 
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    /* background-color: var(--main-color); */
+    
+
+   
+    height: 500px;
+    border-radius: 5%;
+    left: 0%;
+    box-shadow: 5px 5px 10px 0 var(--main-color);
+
+
+}
+
+
+.top-bar {
+
+height: 60px;
+background: #F9FBFF;
+background-color: aliceblue;
+border-radius: 10px 10px 0 0;
+
+}
+
+.avatar {
+width: 35px;
+height: 35px;
+background: linear-gradient(to bottom left, #79C7C5 20%, #A1E2D9 100%);
+background: var(--main-color);
+background-color: blue;
+border-radius: 50%;
+position: absolute;
+top: 11px;
+left: 15px;
+}
+
+.avatar p {
+color: #F9FBFF;
+margin: 7px 12px;
+}
+
+.name {
+position: absolute;
+top: 22px;
+text-transform: uppercase;
+color: #777777;
+font-size: 0.8em;
+letter-spacing: 2px;
+font-weight: 500;
+left: 60px;
+}
+
+.menu {
+position: absolute;
+right: 10px;
+top: 20px;
+width: 10px;
+height: 20px;
+cursor: pointer;
+}
+
+.menu:hover {
+transform: scale(1.1);
+transition: all .3s ease-in;
+}
+
+.icons {
+position: absolute;
+color: #A1E2D9;
+padding: 10px;
+top: 5px;
+right: 21px;
+cursor: pointer;
+}
+
+.icons .fas {
+padding: 5px;
+opacity: 0.8;
+}
+
+.icons .fas:hover {
+transform: scale(1.1);
+transition: all .3s ease-in;
+}
+
+.dots {
+width: 4px;
+height: 4px;
+border-radius: 50%;
+background-color: #79C7C5;
+box-shadow: 0px 7px 0px #79C7C5, 0px 14px 0px #79C7C5;
+background: var(--main-color);
+}
+
+
+.middle{
+position: relative;
+background: #F9FBFF;
+width: 400px;
+opacity: 0.85;
+top: 60px;
+height: 80%;
+}
+
+
+
+.incoming {
+position: absolute;
+width: 500px;
+height: 100%;
+padding: 20px;
+}
+
+
+.incoming .bubble {
+background: #bdbdbd;
+
+
+}
+
+.typing {
+position: absolute;
+top: 0%;
+left: 30px;
+margin-top: -50px;
+color: blue;
+}
+
+.typing .bubble {
+background: #dfdfdf;
+background-color: white;
+padding: 8px 13px 9px 13px;
+
+}
+
+
+
+.ellipsis {
+width: 5px;
+height: 5px;
+display: inline-block;
+background: #a3a3a3;
+background: var(--main-color);
+border-radius: 50%;
+animation: bounce 1.3s linear infinite;
+
+
+}
+
+.ellipsis.one {
+animation-delay: 0.6s;
+color: green;
+background-color: green;
+}
+
+.ellipsis.two {
+animation-delay: 0.5s;
+color: blue;
+background-color: yellow;
+
+}
+
+.ellipsis.three {
+animation-delay: 0.8s;
+background-color: blue;
+}
+
+.bubble {
+position: relative;
+display: inline-block;
+
+color: #F9FBFF;
+font-size: 0.7em;
+padding: 10px 10px 10px 12px;
+border-radius: 20px;
+
+}
+
+.lower {
+margin-top: -80px;
+}
+
+.outgoing {
+position: absolute;
+padding: 20px;
+top: 15%;
+width: 80%;
+
+height: 100%;
+}
+
+.outgoing .bubble {
+background: #79C7C5;
+background-color: #0B192C;
+background-color: white;
+opacity: 1;
+color: black;
+
+}
+.main-otp{
+margin-top: -20px;
+background: #79C7C5;
+/* background-color: #0B192C; */
+width:90%;
+margin-left: -10px;
+
+
+height: 200px;
+
+overflow-y: auto; /* Enable vertical scrolling */
+overflow-wrap: break-word; /* Ensure long words break onto the next line */
+word-wrap: break-word; /* For older browsers */
+white-space: normal; /* Allow text to wrap */
+padding: 10px;
+
+
+
+}
+
+
+
+
+
+
+
+.bottom-bar {
+position: absolute;
+width: 100%;
+height: 55px;
+bottom: 0;
+background: #F9FBFF;
+background-color: aliceblue;
+
+
+border-radius: 0 0 10px 10px;
+}
+
+.right {
+left: 0px;
+}
+
+input {
+padding: 7px;
+width: 74%;
+left: 0;
+position: absolute;
+border: 0;
+top: 13px;
+background: #F9FBFF;
+color: #79C7C5;
+
+}
+
+input::placeholder {
+color: #A1E2D9;
+
+}
+
+input:focus {
+color: #777777;
+outline: 0;
+}
+
+
+.btn-msg{
+position: absolute;
+border: 0;
+font-size: 1em;
+color: #A1E2D9;
+top: 19px;
+opacity: 0.8;
+right: 17px;
+cursor: pointer;
+outline: 0;
+}
+
+.btn-msg:hover {
+transform: scale(1.1);
+transition: all .3s ease-in-out;
+color: #79C7C5;
+}
+
+
+.incoming .bubble {
+background: #e0e0e0; /* Gray background for incoming messages */
+color: #000;         /* Black text color */
+margin-bottom: 10px;
+padding: 10px;
+border-radius: 15px;
+
+}
+
+
+@keyframes bounce {
+30% {
+transform: translateY(-2px);
+}
+60% {
+transform: translateY(0px);
+}
+80% {
+transform: translateY(2px);
+}
+100% {
+transform: translateY(0px);
+opacity: 0.5;
+}
+}
+
+
+
+
+
+
+/* Large screens (Desktops, Laptops) - 1200px and above */
+@media (min-width: 1200px) {
+.chat-container {
+width: 22%;
+height: 70%;
+bottom: 2%;
+left: 1%;
+
+}
+}
+
+/* Medium screens (Tablets, Small Laptops) - 768px to 1199px */
+@media (min-width: 768px) and (max-width: 1199px) {
+.chat-container {
+width: 25%;
+height: 35%;
+bottom: 3%;
+
+
+}
+}
+
+/* Small screens (Mobile Phones, Small Tablets) - 480px to 767px */
+@media (min-width: 480px) and (max-width: 767px) {
+.chat-container {
+width: 80%;
+height: 50%;
+top: 50%;
+
+
+}
+}
+
+/* Extra small screens (Small Mobile Phones) - 320px to 479px */
+@media (min-width: 320px) and (max-width: 479px) {
+.chat-container {
+width: 90%;
+height: 50%;
+bottom: 10%;
+right: 10%;
+
+}
+}
+
+/* Tiny screens (Old/Small Mobile Phones) - below 320px */
+@media (max-width: 319px) {
+.chat-container {
+width: 80%;
+height: 90%;
+bottom: 15%;
+right: 15%;
+}
+}
+
+
+
+
+
+  

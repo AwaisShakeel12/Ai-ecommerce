@@ -1,0 +1,103 @@
+body{
+    background-color: aliceblue;
+    /* background-image: url(../images/plant1.png); */
+}
+
+.background-video {
+    position: absolute; /* Change position to absolute */
+    top: 0; /* Align to the top of .bg-image */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .background-video{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+.main-container{
+    width: 40%;
+    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    
+    border-radius: 15px;
+}
+
+.text-center{
+    color: green;
+    font-weight: bold;
+    /* font-family: ; */
+}
+
+.error-msg{
+    height: 10vh;
+    text-align: center;
+    color: red;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    /* background-color: rgb(16, 16, 52); */
+
+}
+
+.form-label{
+    color: gray;
+    font-weight:700;
+}
+
+.form-control{
+    border-color: transparent;
+    border-bottom-color: gray;
+    border-radius: 0%;
+    color: gray;
+    /* background-color: transparent; */
+    
+}
+
+.form-input{
+    border-color: transparent;
+    border-bottom-color: gray;
+    border-radius: 0%;
+    color: gray;
+    background-color: transparent;
+
+}
+
+.signup-text{
+    /* margin-left: 45%; */
+    text-decoration: none;
+}
+
+
+
+.description-box{
+    height: 100px;
+    /* background-color: aqua; */
+}
+
+.login-btn{
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+
+
+}

@@ -1,0 +1,131 @@
+
+.catagory-item{
+    background: rgb(29,250,170);
+    background: linear-gradient(90deg, rgba(29,250,170,1) 0%, rgba(84,244,118,1) 35%, rgba(0,212,255,1) 100%);
+   
+    margin-bottom: 10px;
+    border-radius: 15px;
+    /* background-color: red; */
+
+    
+}
+
+.category-link {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 600;
+ 
+}
+
+.category-link:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.category-divider {
+    /* margin-top: 5px;  */
+    border-top: 1px solid #dee2e6; /* Divider line color */
+}
+
+
+
+/* -----blog--------- */
+
+.zoom-effect {
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
+  }
+  
+  .zoom-effect:hover {
+    transform: scale(1.1); /* Scale up on hover */
+  }
+
+.user-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.blog-image {
+    max-width: 100%;
+    height: auto;
+}
+.like-icon {
+    cursor: pointer;
+}
+
+.liked {
+    background-image: url('images/heart-red1.png');
+}
+
+
+.blog-box{
+    border: 1px solid gray;
+    padding: 0%;
+    border-radius: 15px;
+}
+
+.header-blog{
+    /* border: 2px solid black; */
+    padding: 0;
+    margin-top: -20px;
+
+    
+}
+
+.blog-footer{
+    border-top: 1px solid gray;
+    width: 100%;
+    margin-left: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+
+}
+
+
+
+/* ------------form--------------- */
+
+
+
+.text-center{
+    color: blue;
+    font-weight: bold;
+    /* font-family: ; */
+}
+
+.form-label{
+    color: gray;
+    font-weight:700;
+}
+
+.form-control{
+    border-color: transparent;
+    border-bottom-color: gray;
+    border-radius: 0%;
+    color: gray;
+    
+}
+
+.signup-text{
+    /* margin-left: 45%; */
+    text-decoration: none;
+}
+
+.textarea{
+    /* border-top-color: gray; */
+}
+
+.login-btn{
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    /* background: rgb(29,250,170); */
+    background: linear-gradient(90deg,rgba(0,212,255,1) 0%, rgb(48, 42, 240) 35%, rgba(0,212,255,1) 100%);
+   
+
+
+}

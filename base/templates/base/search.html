@@ -1,0 +1,136 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+
+body{
+    /* background-color: aquamarine; */
+    background-image: url('../../../static/images/bg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300vh;
+    /* width: 100%; */
+   
+}
+
+        .no-padding {
+            padding: 0;
+        }
+        .no-margin {
+            margin: 0;
+        }
+        .box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-color: transparent;
+        }
+
+        .transparent-bg {
+            color: forestgreen;
+            /* background-color: rgba(255, 255, 255, 0.5); */
+            background-color: transparent; /* Adjust the last value (0.5) for transparency */
+        }
+        .card-box{
+            border: 0px transparent;
+            width: 100%;
+          
+            color: aquamarine;
+            /* background-color: blue; */
+         
+        }
+        .search{
+        /* border-color: blue; */
+        border: 2px solid gray;
+        background-color: transparent;
+        /* border-bottom-color: gray; */
+    
+        border-radius: 15px;
+        color: gray;
+        
+    }
+
+    .background-video {
+    position: absolute; /* Change position to absolute */
+    top: 0; /* Align to the top of .bg-image */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.background-video{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+</style>
+
+
+
+<div class="container-fluid mt-4 background">
+    <!-- <video class="background-video" autoplay loop muted type="video/mp4" src="../base/../../../static/video/bg3.mp4"></video> -->
+
+   
+    <div class="row box">
+        <div class="col-md-4">
+            <div class="card transparent-bg" style="border-color: transparent;">
+                <!-- Removed the extra card class here -->
+                <h1>Search</h1>
+                <form action="" method="get" >
+                    <div class="form-group">
+                        <input type="text" style="border: 1px solid; border-radius: 15px;" class="form-control search" name="q" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- search form  end -->
+
+  
+    <div class="row mt-2 mb-4" >
+        <div class="col-md-12">
+            <div class="row no-margin " >
+                <!-- product  -->
+                <div class="col-md-8 mb-4 " >
+                    <div class="container-fluid">
+                        <div class="card-body "style="height: 100%;">
+                            {% include 'base2/product_component.html' %}
+                        </div>
+                    </div>
+                </div>
+                <!-- product end -->
+    
+                <!-- users start -->
+                <div class="col-md-4">
+                    <div class="container-fluid">
+                        <div class="card-body " style="height: 100%;">
+                            {% include 'base2/users_component.html' %}
+
+                            <!-- users -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

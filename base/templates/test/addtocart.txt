@@ -1,0 +1,21 @@
+
+@login_required(login_url='login')
+def add_to_cart(request, product_id):
+
+    current_url = request.META.get('HTTP_REFERER')
+
+    product = Product.objects.get(id=product_id)
+
+    cart_items = CartItem.objects.filter(user=request.user)
+
+    # seller_ids = [item.product.seller.id for item in cart_items]
+
+    # if len(seller_ids) > 0 and product.seller.id not in seller_ids:
+    #     # If the cart already has items from a different seller, clear the cart
+    #     CartItem.objects.filter(user=request.user).delete()
+    cart_item, created = CartItem.objects.get_or_create(user=request.user, product=product)
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+
+    return HttpResponseRedirect(current_url)

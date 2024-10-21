@@ -1,0 +1,83 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/cart1.css' %}">
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box-element">
+
+                    <a  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Continue Shopping</a>
+
+                    <br>
+                    <br>
+                    <table class="table">
+                        <tr>
+                            <th><h5>Total:<strong> ${{total_price|floatformat:2}}</strong>  </h5></th>
+                            <th>
+                                <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">checkout</a>
+                            </th>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <br>
+                <div class="box-element">
+                    <div class="cart-row">
+                        <div style="flex:2"></div>
+                        <div style="flex:2"><strong>Item</strong></div>
+                        <div style="flex:1"><strong>Price</strong></div>
+                        <div style="flex:1"><strong>Quantity</strong></div>
+                        <div style="flex:1"><strong>Total</strong></div>
+                        <div style="flex:1"><strong>Remove</strong></div>
+                    </div>
+                    {% for cart_item in cart_items %}
+                    <div class="cart-row" style="display: flex; align-items: center; justify-content: center;">
+                        <div style="flex:2"><img class="row-image" src="{{ cart_item.product.image.url }}"></div>
+                        <div style="flex:2"><p>{{ cart_item.product.name }}</p></div>
+                        <div style="flex:1"><p>${{cart_item.product.price|floatformat:2}}</p></div>
+                        <div style="flex:1">
+                            <p class="quantity">{{cart_item.quantity}}</p>
+                            <div class="quantity">
+                                <form action="{% url 'update_cart_item' cart_item.product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="increment">
+                                    <button style="background: none; border: transparent;" type="submit">
+                                        <img  data-action="add" name="increment" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
+                                    </button>
+                                </form>
+                             
+                                
+                                <form action="{% url 'update_cart_item' cart_item.product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="decrement">
+                                    <button style="background: none; border: transparent;" type="submit">
+                                        <img  data-action="remove" name="decrement"  class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
+                                    </button>
+                                </form>
+                        
+                            </div>
+                        </div>
+                        <div style="flex:1"><p>${{ cart_item.total_price|floatformat:1 }}</p></div>
+                        <div style="flex:1">
+                            <a href="{% url 'remove_from_cart' cart_item.product.id %}">
+                                <i class="fa fa-trash-o" style="font-size:24px"></i>
+                                
+                            </a>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

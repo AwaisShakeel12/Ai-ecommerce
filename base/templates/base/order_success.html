@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/order_success1.css' %}">
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Success</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <video class="background-video" autoplay loop muted type="video/mp4" src="../base/../../../static/video/vecteezy_delivery-service-4k-animation-delivery-man-riding-a-scooter_7118562.mp4"></video>
+        
+        <div class="container success-container">
+            <div class="success-box">
+                <h1>Order Placed Successfully</h1>
+                <p>Your order will be dispatched shortly</p>
+                <p>Your order has been successfully placed.</p>
+                <h3>Thank you for shopping with us!</h3>
+            </div>
+        </div>
+      
+    </div>
+
+</body>
+</html>
+
+{% endblock %}

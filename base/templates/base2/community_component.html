@@ -1,0 +1,77 @@
+
+
+{% load static %}
+<div>
+    <div>
+        <br>
+        <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+
+            <input type="text" name="question" placeholder="enter question">
+              <br><br>
+            <input type="file" name="image">
+            <br><br>
+            <input type="submit" value="submit" />
+        </form>
+        <br>
+
+    </div>
+</div>
+<hr>
+
+<br><br>
+
+<div class="upload">
+
+    <div class="main-post" >
+        {% for community in communitys reversed %}
+            <div class="upload-box" >
+              <a href="">
+                <div class="username">
+                </div>
+                <div class="post">
+                    <a href="{% url  'community_post_detail' community.id %}">open post</a>
+                   
+                   <p>{{community.user}}</p>
+                </div>
+                {% if community.image %}
+                <div class="image-box-upload">
+                    <a href="{{community.image.url}}">
+                        <img height="400" width="500" src="{{community.image.url}}" alt="">
+                    </a>
+                </div>
+                {% else %}
+
+                <p>no image attach</p>
+
+                {% endif %}
+
+              
+
+                <div>
+                    <p>{{community.question}}</p>
+                </div>
+
+            
+ 
+                    
+                    <div class="comment" >
+                        <a  href="">
+                            <div>
+                               <img style="margin-top: -5px;" height="35" width="45" src="{% static 'images/comment.png' %}" alt="">
+                            </div>
+                        </a> 
+                    </div>
+
+
+              </a>
+
+            </div>
+            
+
+            </div>
+            <br><br>
+        {% endfor %}
+    </div>
+</div>
+

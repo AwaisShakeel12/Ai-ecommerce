@@ -1,0 +1,99 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static  'css/community_area.css' %}" />
+
+<body>
+    
+
+
+    <div class="container-fluid">
+        <div class="row justify-content-center ">
+            <div class="col-md-8 ">
+                <div class="container mt-5 ">
+                    <div class="card border-2 form-box shadow-lg form-background">
+                        <div class="card-body">
+                            <!-- Post Form -->
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Ask Community</label>
+                                    <textarea  style="background-color: transparent;" class="form-control" name="question" placeholder="What's on your mind?"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="file-box">
+                                        <input type="file" name="image" class="form-control-file file-box">
+                                    </div>
+                                    <div>
+                                        <button type="submit" value="submit" class="btn login-btn">Post</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container mt-5 ">
+                    <!-- Message 1 -->
+                    {% for community in  communitys reversed %}
+                    <div class="row zoom-effect mt-5 mb-5">
+                        <div class="col-auto message-sender-col ">
+                            <div class="message-sender">
+                                <a href="{% url 'profile' community.user.id %}">
+
+                                    <img src="{{community.user.image.url }}" alt="Sender Avatar" class="sender-avatar">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col position-relative">
+                            <!-- Delete Anchor Div -->
+                            
+                            <div class="message-box shadow-lg msg-background position-relative">
+                                <div class="message">
+                                    <p>{{community.question}}</p>
+                                    <!-- Image Placeholder -->
+                                    {% if community.image %}
+                                    <img src="{{community.image.url}}" alt="Message Image" class="img-fluid" style="border-radius: 10px;">
+                                    {% endif %}
+                                </div>
+                                <div class="container">
+                                    <a style="text-decoration: none;" href="{% url  'community_post_detail' community.id %}">
+                                        
+                                    <div class="mb-3">
+                                        <input type="text" name="caption" class="form-control" style="border: 1px solid gray; width: 30%; border-radius: 15px;" id="exampleFormControlInput1" placeholder="Enter message....">
+                                    </div>
+                                        <!-- <img height="30" width="30" src="{% static 'images/comments.png' %}" alt="Message Image" class="img-fluid"> -->
+                                    </a>
+                                </div>
+                                <!-- Delete Button -->
+                                {% if request.user == community.user or user.is_superuser %}
+                                <div class="position-absolute bottom-0 end-0 mb-2 mr-2">
+                                    <a href="{% url 'deletecommunity' community.id %}" class="text-primary">
+                                        <i class="fa fa-trash-o" style="font-size:24px;margin-right: 10px;"></i>
+                                    </a>
+                                </div>
+                                {% endif %}
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- Message 2 -->
+                </div>
+                
+
+            
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+
+{% endblock %}

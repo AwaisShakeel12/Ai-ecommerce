@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/blog2.css' %}">
+<script src="{% static 'css/blog.js' %}"></script>
+
+
+<div class="container-fluid profile-page">
+    <div class="row">
+        <!-- First column -->
+        
+        <div class="col-md-0 boder-2 shadow-lg profile-box">
+            <!-- Top column -->
+            <div class="row boder-2">
+                <!-- Left row for user image -->
+                <div class="col-md-2 mt-3">
+                    <div class="user-image">
+                        {% if user.image %}
+                        <img class="boder-2 shadow-lg" style="margin-bottom:5%;" src="{{user.image.url}}" alt="User Image">
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- Right row for user info -->
+                <div class="col-md-4 ">
+                    <div class="user-info mt-5">
+                        <p><strong>Username: </strong>{{user.username}}</p>
+                        <p> <strong>Email: </strong>{{user.email}}</p>
+                        <p><strong>Phone: </strong> {{user.phone_number}}</p>
+                        {% if request.user == user %}
+                        <p><strong>Update: </strong> <a href="{% url 'updateprofile' %}">Update</a></p>
+                         {% endif %}
+                        <!-- Add more user info details here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Second column -->
+       
+        </div>
+        <!-- Second column (empty for now) -->
+
+       
+
+        <div class="container-fluid product-container col-md-8">           
+              <h1 class="text-center product-text">Products</h1>
+             {% include 'base2/product_component.html' %}
+        </div>
+       
+        <div class="container-fluid blog-container col-md-4">
+            <h1 class="text-center blog-text">Blogs</h1>
+            {% include 'base2/blogs_component.html' %}
+
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+

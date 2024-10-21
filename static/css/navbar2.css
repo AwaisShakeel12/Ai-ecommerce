@@ -1,0 +1,80 @@
+.navbar{
+  background: rgb(29,250,170);
+  background: linear-gradient(90deg,rgba(0,212,255,1)2%, rgba(29,250,170,1) 25%, rgba(84,244,118,1) 35%, rgba(0,212,255,1) 100%);
+  /* background: transparent; */
+  
+  display: flex;
+  position: relative; 
+  top: 0;
+  left: 0; 
+  width: 100%; 
+  z-index: 1000; 
+  padding-top:10px;
+  padding-bottom: 10px;
+ 
+
+
+    
+}
+
+
+
+
+
+/* .nav-item{
+
+} */
+
+.navbar-toggler{
+  padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+  font-size: 0.875rem;
+  
+}
+
+
+
+
+
+.nav-link{
+ color: white;
+ font-weight: bold;
+ font-size: 20px;
+ /* color: red; */
+}
+
+.nav-link:hover{
+  color: green;
+  text-decoration: underline;
+}
+
+
+
+.hovercls:hover{
+  color: green;
+  text-decoration: underline;
+}
+.d-flex{
+    text-decoration: none;
+    border-radius: 15px;
+
+}
+
+.form-control{
+    text-decoration: none;
+}
+
+.search-box{
+  border-radius: 15px;
+  
+}
+
+/* .navbar-collapse{
+  background: linear-gradient(90deg,rgba(0,212,255,1)2%, rgba(29,250,170,1) 25%, rgba(84,244,118,1) 35%, rgba(0,212,255,1) 100%);
+
+}
+
+.collapse {
+  background: linear-gradient(90deg,rgba(0,212,255,1)2%, rgba(29,250,170,1) 25%, rgba(84,244,118,1) 35%, rgba(0,212,255,1) 100%);
+
+
+} */

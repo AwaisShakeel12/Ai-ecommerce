@@ -1,0 +1,372 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home1.css' %}">
+<link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+<!-- <script src="{% static 'js/home.js' %}"></script> -->
+<!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+<div class="container-fluid bg-image">
+    <div class="row align-items-center justify-content-center h-100">
+        <div class="col-md-6 mt-5">
+          <!-- <video class="background-video" autoplay loop muted type="video/mp4" src="../base/../../../static/video/plants_haven.mp4"></video> -->
+
+          <video class="background-video" autoplay loop muted>
+            <source src="{% static 'video/paradise.mp4' %}" type="video/mp4">
+            <!-- Fallback content -->
+            Your browser does not support the video tag. Please upgrade your browser.
+            <img src="{% static 'images/bg2.jpg' %}" alt="Background image" class="background-fallback">
+        </video>
+    </div>
+    </div>
+</div>
+
+
+<!-- ----------chatbot--------------------- -->
+
+
+<button id="chatButton">
+    <i class="fas fa-comments"></i>
+</button>
+<div class="bootstrap-scope">
+    <div class="chat-container   ">
+        <div class="chatbox">
+            <div class="top-bar">
+                <div class="avatar"><p>A</p></div>
+                <div class="name">AI Assistant  <p style="font-size:8px;">HI! Iam hear to assist you.</p></div>
+                
+                <div class="icons">
+                    
+               
+                    <i id="close" class="fas fa-close"></i>
+                </div>
+                <div class="menu">
+                    <div class="dots"></div>
+                </div>
+            </div>
+            <div class="middle">
+                <div class="voldemort">
+                    <div class="incoming">
+                    
+                    </div>
+                    {% if result %}
+                    <div class="outgoing">
+                        <div class="bubble lower main-otp">{{result}}</div>
+                    </div>
+                    {% endif %}
+   
+
+
+
+                    <div class="typing">
+                        <div class="bubble">
+                            <div class="ellipsis one"></div>
+                            <div class="ellipsis two"></div>
+                            <div class="ellipsis three"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form method="post" action="">
+                {% csrf_token %}
+                
+            <div class="bottom-bar">
+                <div class="chat">
+                    <input type="text"  name="query" id="messageInput" placeholder="Type a message..." />
+                    <button class="btn-msg" type="submit" id="sendMessageBtn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>    
+
+<script>
+    // Toggle chat container visibility
+    $('#chatButton').on('click', function() {
+        $('.chat-container').toggle(); // Show or hide the chat container
+        console.log('button click')
+    });
+
+    $('#close').on('click', function() {
+        $('.chat-container').toggle(); // Show or hide the chat container
+        console.log('button click')
+    });
+    
+</script>
+
+
+
+<!-- -----plants---------- -->
+<div class="container-fluid  main-plant-container">
+    <h2  class="text-center shadow-lg plant-text big-txt">Plants</h2>
+    
+    <div class="container-fluid mt-5 ">
+       
+        <div class="row  row-cols-md-3 ">
+            {% for product in plants %}
+            <div class=" mt-2 mb-3 plant-container">  
+                <div class="container zoom-effect plant-box">
+                    <div style="padding: 15px; background-color: white; border-top-left-radius: 15px; border-top-right-radius: 15px;" >
+
+                        <a href="{% url 'productdetail' product.id %}">
+                            <img height="300px" width="100%" class="thumbnail plant-image"   src="{{ product.image.url }}" >
+                            
+                        </a>
+                    </div>
+                    <div class="box-element product plant-body ml-5 shadow-lg bg-light">
+                        <h4 class="plant-name text-center"><strong>{{ product.name }}  </strong> </h4>
+                        <hr>
+                        <div class="row plant-footer">
+                            <div class="col mb-3">
+                                <form action="{% url 'add_to_cart' product.id %}?next={{request.path}}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" data-action="add" class="btn btn-outline-secondary add-btn update-cart" style="margin-left: 3%;" >Add to Cart</button>
+                                </form>
+                            </div>
+                           
+                            <div class="col mb-3 plant-price">
+                                <h4 class="text-center"><strong>${{ product.price }}</strong></h4>
+                            </div>
+                        
+                        </div>
+                        <div class="col mb-3 buyer-info-box">
+                            {% if product.seller == request.user %}
+                            <a href="{% url 'updateproduct' product.id %}">update</a>
+                            {% endif %}
+                            <a href="{% url 'profile' product.seller.id %}" style="margin-left: 5%;"><strong>{{ product.seller.username }}</strong></a>
+                            {% if product.seller.is_superuser %}
+                            <img height="20" width="20" style=" border-radius: 50%; "  src="{% static 'images/tick.png' %}" alt="User Image">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                
+            
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- -----products---------- -->
+<div class="container-fluid  main-product-container">
+    <h2  class="text-center shadow-lg plant-text big-txt">Products</h2>
+    
+    <div class="container-fluid mt-5 ">
+       
+        <div class="row  row-cols-md-3 ">
+            {% for product in products %}
+            <div class=" mt-2 mb-3 plant-container">
+                <div class="container zoom-effect plant-box">
+                    <div style="padding: 15px; background-color: white; border-top-left-radius: 15px; border-top-right-radius: 15px;" >
+
+                    <a href="{% url 'productdetail' product.id %}">
+                        <img height="300px" width="100%" class="thumbnail plant-image"  src="{{ product.image.url }}">
+
+                    </a>
+                    </div>
+                    <div class="box-element product plant-body ml-5 shadow-lg bg-light">
+                        <h4 class="plant-name text-center"><strong>{{ product.name }}  </strong> </h4>
+                        <hr>
+                        <div class="row plant-footer">
+                            <div class="col mb-3">
+                                <form action="{% url 'add_to_cart' product.id %}?next={{request.path}}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" data-action="add" class="btn btn-outline-secondary add-btn update-cart" style="margin-left: 3%;" >Add to Cart</button>
+                                </form>
+                            </div>
+                           
+                            <div class="col mb-3 plant-price">
+                                <h4 class="text-center"><strong>${{ product.price }}</strong></h4>
+                            </div>
+                        
+                        </div>
+                        <div class="col mb-3 buyer-info-box">
+                            <a href="{% url 'profile' product.seller.id %}" style="margin-left: 5%;"><strong>{{ product.seller.username }}</strong></a>
+                            {% if product.seller.is_superuser %}
+                            <img height="20" width="20" style=" border-radius: 50%; "  src="{% static 'images/tick.png' %}" alt="User Image">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                
+            
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+<!-- -----------faq------------ -->
+
+
+<div class="container-fluid faq-main-container">
+        <h2 class="text-center  plant-text big-txt">FAQS</h2>
+        
+
+        <div class="container faq-con">
+            <div class="container mt-5 mb-5">
+         
+                <div class="faq-question shadow-lg">
+                  <h3>Q:How to Become Selller at Plants Haven? </h3>
+                  <button id="faq-btn1" class="toggle-answer">
+                    <i class="fa fa-chevron-circle-down" style="font-size:36px; background-color: transparent;"></i>
+                  </button>
+                </div>
+                <div id="faq-answer1" class="faq-answer shadow-lg ">
+                  <p>First Create Account - Go to Register and provide all Information and click Register.</p>
+                </div>
+
+                <!-- ------two------------- -->
+                <div class="faq-question shadow-lg">
+                    <h3>Q:How much seller registration fee? </h3>
+                    <button id="faq-btn2" class="toggle-answer">
+                        <i class="fa fa-chevron-circle-down" style="font-size:36px"></i>
+                    </button>
+                  </div>
+                  <div id="faq-answer2" class="faq-answer shadow-lg ">
+                    <p>50$</p>
+                  </div>
+
+                <!-- -------three----------------- -->
+
+                <div class="faq-question shadow-lg">
+                    <h3>Q:How to contact the developer? </h3>
+                    <button id="faq-btn3" class="toggle-answer">
+                        <i class="fa fa-chevron-circle-down" style="font-size:36px"></i>
+                    </button>
+                  </div>
+                  <div id="faq-answer3" class="faq-answer shadow-lg ">
+                    <p>Click on About us in navigation bar. New window will open. Go to contact section and do contact</p>
+                  </div>
+             
+            </div>
+          </div>
+
+        
+</div>
+
+<script>
+    
+    $("#faq-btn1").click(function(){
+        $('#faq-answer1').slideToggle(1000)
+    })
+
+    $("#faq-btn2").click(function(){
+        $('#faq-answer2').slideToggle(1000)     
+    })
+
+    $("#faq-btn3").click(function(){
+        $('#faq-answer3').slideToggle(1000)     
+    })
+
+</script>
+
+    
+<!-- -----feedback -------------------------- -->
+    
+<div class="container-fluid feedback-main-container">
+    <h2 class="text-center   plant-text big-txt">FeedBack</h2>
+  
+
+
+
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+            
+                {% for feedback in feedbacks %}
+              
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="container feedback-container">
+                        <div class="feedback-box shadow-lg">
+                            <div class="feedback-img-box">
+                               
+                                {% if feedback.user.image %}
+                                <a href="{% url 'profile' feedback.user.id %}">
+                                    <img class="image feedback-image shadow-lg" src="{{ feedback.user.image.url }}" alt="">
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <h3 class="feedback-text text-success"><strong>{{ feedback.user.username }}</strong></h3>
+                            </div>
+                            <div class="feedback-body">
+                                <p class="feedback-text zoom-effect">{{ feedback.feedback }}</p>
+                            </div>
+                            <div class="stars zoom-effect">
+                                <span  style="font-size:30px;">&#9733;</span>
+                                <span style="font-size:30px;">&#9733;</span>
+                                <span style="font-size:30px;">&#9733;</span>
+                                <span style="font-size:30px;">&#9733;</span>
+                                <span style="font-size:30px;">&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+ 
+
+
+
+    <!-- -----------form --------------------- -->
+    <div class="container feedback-form border-2 shadow-lg">
+        <div class="col mt-3">
+            <form action=""  enctype="multipart/form-data" method="post" class="text-dark">
+                {% csrf_token %}
+        
+              <div class="mb-3 ">
+                <label for="exampleFormControlInput1" class="form-label"></label>
+                <input  style="border-radius: 15px;" type="text" name="feedback" class="form-control" id="exampleFormControlInput1" placeholder="Enter feedback....">
+              </div>
+        
+            <select class="form-select" name="good_or_bad" aria-label="Default select example">
+                <option selected>Good or Bad</option>
+                <option value="good">Good</option>
+                <option value="bad">Bad</option>
+              </select>
+        
+              <button type="submit"   value="submit"  class="btn btn-primary mt-3 mb-3 signup-text login-btn shadow-lg">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ------footer ---------------- -->
+
+{% include 'base2/footer_component.html' %}
+
+{% endblock%}

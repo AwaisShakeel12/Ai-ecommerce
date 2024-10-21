@@ -1,0 +1,71 @@
+
+
+
+.profile-box{
+    border-radius: 15px;
+    background-image: url('../../../static/images/bg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color:whitesmoke;
+    /* width: 100%; */
+    border-radius: 0;
+
+}
+
+/* Style for user image */
+.user-image {
+    margin-left: 10px; /* Adjust margin as needed */
+}
+
+.user-image img {
+    width: 35vh; /* Adjust the image size as needed */
+    height: 30vh;
+    border-radius: 50%; /* Make the image round */
+}
+
+/* Style for user info */
+.user-info {
+    margin-left: 20px; /* Adjust margin as needed */
+    /* color: white; */
+}
+
+.user-info p {
+    margin-bottom: 5px; /* Add some space between user info details */
+}
+
+/* Additional styles for the profile page */
+.profile-page {
+    margin: 0; 
+    padding: 0; 
+    width: 99%; /* Add some top margin to the entire profile page */
+}
+
+
+/* ------------------product styling ------------ */
+
+
+.product-container{
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+.product-text{
+  background: linear-gradient(90deg,rgba(0,212,255,1)2%, rgba(29,250,170,1) 25%, rgba(0,212,255,1) 100%);
+
+    color: white;
+}
+
+/* _--------------blog-container ------------ */
+
+.blog-container{
+    margin: 0;
+    padding: 0;
+}
+
+.blog-text{
+    background: linear-gradient(90deg,rgba(0,212,255,1)2%, rgba(29,250,170,1) 25%,  rgba(0,212,255,1) 100%);
+
+    
+    color: white;
+}
